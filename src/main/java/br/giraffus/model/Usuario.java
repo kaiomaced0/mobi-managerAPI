@@ -1,10 +1,12 @@
 package br.giraffus.model;
 
 
+import br.giraffus.enums.usuario.Perfil;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -22,8 +24,9 @@ public class Usuario extends EntityClass{
 
     private String cpf;
 
-    private Boolean mudarSenha; // usado para ele conseguir trocar de senha.
+    private String login;
 
+    private Boolean mudarSenha; // usado para ele conseguir trocar de senha.
 
     @OneToMany
     @JoinColumn(name = "usuario_id")
@@ -32,6 +35,11 @@ public class Usuario extends EntityClass{
     @OneToMany
     @JoinColumn(name = "usuario_id")
     private List<Proprietario> listaProprietario;
+
+    @ElementCollection
+    @CollectionTable(name = "usuario_perfil", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
+    @Column(name = "perfil", length = 30)
+    private Set<Perfil> perfis;
 
 
     public List<Imovel> getListaImovel() {
@@ -104,5 +112,21 @@ public class Usuario extends EntityClass{
 
     public void setMudarSenha(Boolean mudarSenha) {
         this.mudarSenha = mudarSenha;
+    }
+
+    public Set<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void setPerfis(Set<Perfil> perfis) {
+        this.perfis = perfis;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

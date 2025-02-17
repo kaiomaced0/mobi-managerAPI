@@ -23,6 +23,17 @@ public class Contrato extends EntityClass {
     @JoinColumn(name = "inquilino_id")
     private Inquilino inquilino;
 
+    @ManyToOne
+    @JoinColumn(name = "imovel)id")
+    private Imovel imovel;
+
+    public Imovel getImovel() {
+        return imovel;
+    }
+
+    public void setImovel(Imovel imovel) {
+        this.imovel = imovel;
+    }
 
     public String getDiaVencimento() {
         return diaVencimento;
