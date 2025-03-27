@@ -2,8 +2,6 @@ package br.giraffus.dto;
 
 import br.giraffus.model.Usuario;
 
-import java.time.LocalDate;
-
 public record UsuarioResponseDTO(
         Long id,
         String nome,
@@ -11,8 +9,7 @@ public record UsuarioResponseDTO(
         String login,
         String senha,
         String telefone,
-        String cpf,
-        LocalDate dataNascimento
+        String cpf
 ) {
     public static UsuarioResponseDTO toDTO(Usuario usuario) {
         return new UsuarioResponseDTO(
@@ -22,8 +19,7 @@ public record UsuarioResponseDTO(
                 usuario.getLogin(),
                 usuario.getSenha(),
                 usuario.getTelefone(),
-                usuario.getCpf(),
-                usuario.getDataNascimento()
+                usuario.getCpf()
         );
     }
 }
