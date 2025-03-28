@@ -1,8 +1,10 @@
 package br.giraffus.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Notificacao extends EntityClass {
@@ -13,9 +15,11 @@ public class Notificacao extends EntityClass {
     private String tipoNotificacao;
     
     @ManyToOne
+    @JoinColumn(name = "empresa_id")
     private Empresa empresa;
     
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
     
     // Getters e Setters

@@ -1,24 +1,24 @@
 package br.giraffus.service.impl;
 
-import br.giraffus.enums.usuario.Perfil;
-import br.giraffus.model.Usuario;
-import br.giraffus.service.TokenJwt;
-import io.smallrye.jwt.build.Jwt;
-import jakarta.enterprise.context.ApplicationScoped;
-import org.jboss.logging.Logger;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Set;
-
 import java.util.stream.Collectors;
 
+import org.jboss.logging.Logger;
+
+import br.giraffus.enums.usuario.Perfil;
+import br.giraffus.model.Usuario;
+import br.giraffus.service.TokenJwtService;
+import io.smallrye.jwt.build.Jwt;
+import jakarta.enterprise.context.ApplicationScoped;
+
 @ApplicationScoped
-public class TokenJwtImpl implements TokenJwt {
+public class TokenJwtServiceImpl implements TokenJwtService {
 
     private static final Duration EXPIRATION_TIME = Duration.ofHours(24);
 
-    public static final Logger LOG = Logger.getLogger(TokenJwtImpl.class);
+    public static final Logger LOG = Logger.getLogger(TokenJwtServiceImpl.class);
 
     @Override
     public String generateJwt(Usuario usuario) {

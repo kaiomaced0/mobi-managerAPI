@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Plano extends EntityClass {
+    
     private String nome;
     private Double preco;
     private String descricao;

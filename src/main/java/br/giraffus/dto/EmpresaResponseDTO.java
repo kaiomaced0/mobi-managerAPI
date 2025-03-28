@@ -23,7 +23,10 @@ public record EmpresaResponseDTO(
             usuarioIds,
             empresa.getPlano().getId(),
             empresa.getConta().getId(),
-            empresa.getPagamentoEmpresa().getId()
+            empresa.getPagamentoEmpresa().stream()
+                .map(pagamentoEmpresa -> pagamentoEmpresa.getId())
+                .findFirst()
+                .orElse(null)
         );
     }
 }

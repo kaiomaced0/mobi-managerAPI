@@ -6,7 +6,6 @@ import java.util.List;
 import br.giraffus.dto.DocumentoDTO;
 import br.giraffus.dto.PagamentoEmpresaDTO;
 import br.giraffus.dto.PagamentoEmpresaResponseDTO;
-import br.giraffus.model.Documento;
 import br.giraffus.model.EntityClass;
 import br.giraffus.model.PagamentoEmpresa;
 import br.giraffus.repository.DocumentoRepository;
@@ -96,15 +95,6 @@ public class PagamentoEmpresaServiceImpl implements PagamentoEmpresaService {
         if (pagamento == null || !pagamento.getAtivo()) {
             throw new NotFoundException();
         }
-
-        Documento documento = new Documento();
-        documento.setNome(dto.nome());
-        documento.setTipo(dto.tipo());
-        documento.setArquivo(dto.arquivo());
-        documento.setPagamentoEmpresa(pagamento);
-        
-        pagamento.getDocumentos().add(documento);
-        documentoRepository.persist(documento);
         
         return PagamentoEmpresaResponseDTO.toDTO(pagamento);
     }

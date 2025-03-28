@@ -1,10 +1,13 @@
 package br.giraffus.model;
 
 import br.giraffus.enums.Imovel.CategoriaImovel;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Imovel extends EntityClass{
 
     private Integer qtdQuartos;

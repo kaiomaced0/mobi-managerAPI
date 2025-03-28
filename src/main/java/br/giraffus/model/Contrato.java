@@ -1,12 +1,14 @@
 package br.giraffus.model;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Contrato extends EntityClass {
 
     private String diaVencimento;

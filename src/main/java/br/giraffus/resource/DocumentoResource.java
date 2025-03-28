@@ -23,6 +23,7 @@ public class DocumentoResource {
 
     @POST
     @PermitAll
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response createDocumento(DocumentoDTO dto) {
         return Response.ok(service.create(dto)).build();
     }
@@ -45,7 +46,7 @@ public class DocumentoResource {
     @Path("/download/{id}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response downloadDocumento(@PathParam("id") Long id) {
-        return Response.ok(service.downloadDocumento(id)).build();
+        return Response.ok(service.download(id)).build();
     }
 
     @DELETE

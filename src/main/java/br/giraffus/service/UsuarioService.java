@@ -1,11 +1,21 @@
 package br.giraffus.service;
 
-import br.giraffus.repository.UsuarioRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
+import java.util.List;
 
-@ApplicationScoped
-public class UsuarioService {
-    @Inject
-    UsuarioRepository repository;
+import br.giraffus.dto.AuthUsuarioDTO;
+import br.giraffus.dto.UsuarioDTO;
+import br.giraffus.dto.UsuarioResponseDTO;
+import br.giraffus.model.Usuario;
+import jakarta.ws.rs.core.Response;
+
+public interface UsuarioService {
+    List<UsuarioResponseDTO> getAll();
+    List<UsuarioResponseDTO> getFuncionarios();
+    List<UsuarioResponseDTO> getNome(String nome);
+    Usuario findByLoginAndSenha(AuthUsuarioDTO auth);
+    Usuario findByEmailAndSenha(AuthUsuarioDTO auth);
+    UsuarioResponseDTO getId(Long id);
+    UsuarioResponseDTO insert(UsuarioDTO usuario);
+    Response insertFuncionario(UsuarioDTO usuario);
+    Response delete(Long id);
 }

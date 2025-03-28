@@ -1,8 +1,11 @@
 package br.giraffus.model;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class PagamentoEmpresa extends EntityClass {
@@ -13,10 +16,10 @@ public class PagamentoEmpresa extends EntityClass {
     private Boolean pagamentoRealizado;
     private String pagamento;
     
-    @OneToMany(mappedBy = "pagamentoEmpresa", cascade = CascadeType.ALL)
+    @OneToMany()
+    @JoinColumn(name = "pagamento_empresa_id")
     private List<Documento> documentos;
 
-    // Getters e Setters
     public Long getAno() { return ano; }
     public void setAno(Long ano) { this.ano = ano; }
     

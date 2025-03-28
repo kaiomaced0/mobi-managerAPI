@@ -1,9 +1,10 @@
 package br.giraffus.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Endereco extends EntityClass{
 
     private String quadra;

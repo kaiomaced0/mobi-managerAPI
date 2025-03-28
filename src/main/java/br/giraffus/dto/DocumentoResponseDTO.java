@@ -5,15 +5,17 @@ import br.giraffus.model.Documento;
 public record DocumentoResponseDTO(
     Long id,
     String nome,
+    String arquivo,
     String tipo,
-    Long pagamentoEmpresaId
+    String descricao
 ) {
     public static DocumentoResponseDTO toDTO(Documento documento) {
         return new DocumentoResponseDTO(
             documento.getId(),
-            documento.getNome(),
+            documento.getTitulo(),
+            documento.getNomeArquivo(),
             documento.getTipo(),
-            documento.getPagamentoEmpresa().getId()
+            documento.getDescricao()
         );
     }
 }

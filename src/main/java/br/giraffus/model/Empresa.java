@@ -1,23 +1,32 @@
 package br.giraffus.model;
 
-import jakarta.persistence.*;
 import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Empresa extends EntityClass {
     private String nome;
     
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "id_empresa")
     private List<Usuario> usuarios;
     
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "id_plano")
     private Plano plano;
     
     @OneToOne
+    @JoinColumn(name = "id_conta")
     private Conta conta;
     
-    @OneToOne
-    private PagamentoEmpresa pagamentoEmpresa;
+    @OneToMany
+    @JoinColumn(name = "id_pagamento_empresa")
+    private List<PagamentoEmpresa> pagamentoEmpresa;
 
     // Getters e Setters
     public String getNome() { return nome; }
@@ -31,9 +40,13 @@ public class Empresa extends EntityClass {
     
     public Conta getConta() { return conta; }
     public void setConta(Conta conta) { this.conta = conta; }
-    
-    public PagamentoEmpresa getPagamentoEmpresa() { return pagamentoEmpresa; }
-    public void setPagamentoEmpresa(PagamentoEmpresa pagamentoEmpresa) { 
-        this.pagamentoEmpresa = pagamentoEmpresa; 
+
+    public List<PagamentoEmpresa> getPagamentoEmpresa() {
+        return pagamentoEmpresa;
     }
+    public void setPagamentoEmpresa(List<PagamentoEmpresa> pagamentoEmpresa) {
+        this.pagamentoEmpresa = pagamentoEmpresa;
+    }
+
+    
 }
