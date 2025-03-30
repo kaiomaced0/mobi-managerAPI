@@ -1,0 +1,117 @@
+@startuml
+
+class Pessoa {
+    + nome: string
+    + cpf: string
+    + telefone: string
+    + email: string
+}
+
+class Usuario {
+    + senha: string
+    + papel: string
+}
+
+class Inquilino {
+    + históricoAlugueis: string[]
+}
+
+class Proprietario {
+    + listaImoveis: Imovel[]
+}
+
+class Endereco {
+    + rua: string
+    + bairro: string
+    + cidade: string
+    + estado: string
+    + cep: string
+    + numero: string
+    + complemento: string
+}
+
+class Imovel {
+    + id: number
+    + nome: string
+    + tipo: string
+    + endereco: Endereco
+    + proprietario: Proprietario
+    + iptu: number
+    + valor: number
+    + metragem: number
+    + anoConstrucao: number
+    + status: string
+}
+
+class Contrato {
+    + id: number
+    + imovel: Imovel
+    + inquilino: Inquilino
+    + dataInicio: Date
+    + dataFim: Date
+    + valorAluguel: number
+    + status: string
+}
+
+class Documento {
+    + id: number
+    + nome: string
+    + tipo: string
+    + dataUpload: Date
+}
+
+class Pagamento {
+    + id: number
+    + mes: number
+    + ano: number
+    + valor: number
+    + status: string
+}
+
+class Admin {
+    ' + gerenciarUsuarios(): void
+    ' + gerenciarContratos(): void
+    ' + gerenciarPagamentos(): void
+    ' + gerenciarImoveis(): void
+}
+
+class Plano {
+
+}
+
+class Notificacao {
+    + id: number
+    + mensagem: string
+    + dataEnvio: Date
+    + status: string
+    + tipoNotificacao: string
+}
+
+
+Pessoa <|-- Usuario
+Pessoa <|-- Inquilino
+Pessoa <|-- Proprietario
+
+Imovel "1" *--> "1" Proprietario
+Imovel "1" *--> "1" Endereco
+
+Contrato "1" *--> "1" Imovel
+Contrato "1" *--> "1" Inquilino
+Contrato "1" *--> "1..*" Documento
+Contrato "1" *--> "1..*" Pagamento
+
+Pagamento "1" *--> "1" Contrato
+
+Admin "1" *--> "1..*" Usuario
+Admin "1" *--> "1..*" Inquilino
+Admin "1" *--> "1..*" Proprietario
+Admin "1" *--> "1..*" Imovel
+Admin "1" *--> "1..*" Contrato
+Admin "1" *--> "1..*" Documento
+Admin "1" *--> "1..*" Pagamento
+Admin "*" *--> "1" Plano
+Admin "1" *--> "*" Notificacao
+Usuario "1" *--> "*" Notificacao
+
+
+@enduml
