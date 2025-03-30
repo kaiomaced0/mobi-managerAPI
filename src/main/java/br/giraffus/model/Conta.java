@@ -2,7 +2,7 @@ package br.giraffus.model;
 
 import jakarta.persistence.Entity;
 
-@Entity
+@Entity(name = "Conta")
 public class Conta extends EntityClass {
     private String cpf;
     private String cnpj;

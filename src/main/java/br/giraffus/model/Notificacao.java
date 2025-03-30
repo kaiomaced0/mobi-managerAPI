@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Entity
+@Entity(name = "Notificacao")
 public class Notificacao extends EntityClass {
     
     private String mensagem;

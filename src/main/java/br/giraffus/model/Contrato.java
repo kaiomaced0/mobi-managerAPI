@@ -8,7 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
-@Entity
+@Entity(name = "Contrato")
 public class Contrato extends EntityClass {
 
     private String diaVencimento;

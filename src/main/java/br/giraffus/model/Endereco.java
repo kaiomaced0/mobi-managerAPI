@@ -4,12 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Entity
+@Entity(name = "Endereco")
 public class Endereco extends EntityClass{
 
-    private String quadra;
-
-    private String rua;
+    private String Logradouro;
 
     private String bairro;
 
@@ -17,11 +15,25 @@ public class Endereco extends EntityClass{
 
     private String cep;
 
-    private String descricao;
+    private String complemento;
+
+    private String latitude;
+    private String longitude;
+
+    private String cidade;
 
     @ManyToOne
-    @JoinColumn(name = "cidade_id")
-    private Cidade cidade;
+    @JoinColumn(name = "estado_endereco")
+    private Estado estado;
+
+
+    public String getLogradouro() {
+        return Logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        Logradouro = logradouro;
+    }
 
     public String getBairro() {
         return bairro;
@@ -39,22 +51,6 @@ public class Endereco extends EntityClass{
         this.numero = numero;
     }
 
-    public String getQuadra() {
-        return quadra;
-    }
-
-    public void setQuadra(String quadra) {
-        this.quadra = quadra;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
     public String getCep() {
         return cep;
     }
@@ -63,19 +59,43 @@ public class Endereco extends EntityClass{
         this.cep = cep;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
-    public Cidade getCidade() {
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(Cidade cidade) {
+    public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

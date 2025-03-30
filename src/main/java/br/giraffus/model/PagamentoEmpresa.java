@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
-@Entity
+@Entity(name = "PagamentoEmpresa")
 public class PagamentoEmpresa extends EntityClass {
     private Long ano;
     private Long mes;

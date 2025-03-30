@@ -2,7 +2,7 @@ package br.giraffus.model;
 
 import jakarta.persistence.Entity;
 
-@Entity
+@Entity(name = "Pagamento")
 public class Pagamento extends EntityClass{
 
     private String cpf;
