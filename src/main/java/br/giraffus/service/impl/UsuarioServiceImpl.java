@@ -27,12 +27,6 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .toList();
     }
 
-    @Override
-    public List<UsuarioResponseDTO> getFuncionarios() {
-        return repository.list("cargo", "FUNCIONARIO").stream()
-                .map(UsuarioResponseDTO::toDTO)
-                .toList();
-    }
 
     @Override
     public List<UsuarioResponseDTO> getNome(String nome) {

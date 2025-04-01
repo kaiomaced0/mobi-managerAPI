@@ -30,13 +30,6 @@ public class UsuarioResource {
 
     @GET
     @PermitAll
-    @Path("/funcionarios")
-    public Response getFuncionarios() {
-        return Response.ok(service.getFuncionarios()).build();
-    }
-
-    @GET
-    @PermitAll
     @Path("/nome/{nome}")
     public Response getNome(@PathParam("nome") String nome) {
         return Response.ok(service.getNome(nome)).build();

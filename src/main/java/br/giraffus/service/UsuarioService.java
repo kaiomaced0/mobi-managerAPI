@@ -10,7 +10,6 @@ import jakarta.ws.rs.core.Response;
 
 public interface UsuarioService {
     List<UsuarioResponseDTO> getAll();
-    List<UsuarioResponseDTO> getFuncionarios();
     List<UsuarioResponseDTO> getNome(String nome);
     Usuario findByLoginAndSenha(AuthUsuarioDTO auth);
     Usuario findByEmailAndSenha(AuthUsuarioDTO auth);

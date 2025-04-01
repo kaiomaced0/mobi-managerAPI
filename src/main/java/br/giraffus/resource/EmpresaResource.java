@@ -1,6 +1,7 @@
 package br.giraffus.resource;
 
 import br.giraffus.dto.EmpresaDTO;
+import br.giraffus.dto.EmpresaUpdateDTO;
 import br.giraffus.service.EmpresaService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
@@ -44,7 +45,7 @@ public class EmpresaResource {
     @PUT
     @PermitAll
     @Path("/{id}")
-    public Response updateEmpresa(@PathParam("id") Long id, EmpresaDTO dto) {
+    public Response updateEmpresa(@PathParam("id") Long id, EmpresaUpdateDTO dto) {
         return Response.ok(service.update(id, dto)).build();
     }
 

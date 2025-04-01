@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.giraffus.dto.EmpresaDTO;
 import br.giraffus.dto.EmpresaResponseDTO;
+import br.giraffus.dto.EmpresaUpdateDTO;
 import br.giraffus.dto.UsuarioResponseDTO;
 import br.giraffus.model.Empresa;
 import br.giraffus.model.EntityClass;
@@ -63,19 +64,20 @@ public class EmpresaServiceImpl implements EmpresaService {
 
     @Override
     @Transactional
-    public EmpresaResponseDTO update(Long id, EmpresaDTO dto) {
+    public EmpresaResponseDTO update(Long id, EmpresaUpdateDTO dto) {
         Empresa empresa = repository.findById(id);
         if (empresa == null || !empresa.getAtivo()) {
             throw new NotFoundException();
         }
         if(dto.nome() != null) empresa.setNome(dto.nome());
 
-        if(dto.contaId() != null){
+        if(dto.planoId() != null){
             if(dto.planoId() != null) empresa.setPlano(planoRepository.findById(dto.planoId()));
         }
         if(dto.contaId() != null){
             if(dto.contaId() != null) empresa.setConta(contaRepository.findById(dto.contaId()));
         }
+
         repository.persist(empresa);
         return EmpresaResponseDTO.toDTO(empresa);
     }
