@@ -34,7 +34,7 @@ public class TokenJwtServiceImpl implements TokenJwtService {
 
             LOG.info("Requisição TokenJwt.generateJwt()");
 
-            return Jwt.issuer("gika-jwt")
+            return Jwt.issuer("glacksmiro-jwt")
                     .subject(usuario.getLogin())
                     .groups(roles)
                     .expiresAt(expiryDate)

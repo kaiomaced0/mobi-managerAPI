@@ -1,10 +1,12 @@
 package br.giraffus.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
 
 import br.giraffus.dto.AuthUsuarioDTO;
 import br.giraffus.dto.UsuarioDTO;
 import br.giraffus.dto.UsuarioResponseDTO;
+import br.giraffus.enums.usuario.Perfil;
 import br.giraffus.model.Usuario;
 import br.giraffus.repository.UsuarioRepository;
 import br.giraffus.service.UsuarioService;
@@ -65,6 +67,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario.setSenha(dto.senha());
         usuario.setLogin(dto.login());
         usuario.setCargo(dto.cargo());
+        usuario.setPerfis(new HashSet<>());
+        usuario.getPerfis().add(Perfil.USER);
         repository.persist(usuario);
         return UsuarioResponseDTO.toDTO(usuario);
     }
